@@ -1,0 +1,2 @@
+print
+'undef var=' || undef_var;
