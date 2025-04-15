@@ -270,11 +270,6 @@
         <dependencies>
             <!-- dependencies are always listed in sorted order by groupId, artifactId -->
             <dependency>
-              <groupId>org.knobinjection</groupId>
-              <artifactId>knob_runtime</artifactId>
-              <version>1.0-SNAPSHOT</version>
-            </dependency>
-            <dependency>
                 <groupId>com.amazonaws</groupId>
                 <artifactId>aws-java-sdk-bundle</artifactId>
                 <version>${aws-java-sdk.version}</version>
@@ -1463,16 +1458,6 @@
             <plugins>
                 <!-- plugins are always listed in sorted order by groupId, artifactId -->
                 <plugin>
-                  <groupId>org.apache.maven.plugins</groupId>
-                  <artifactId>maven-compiler-plugin</artifactId>
-                  <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
-                    <debug>true</debug>
-                    <debuglevel>lines,vars,source</debuglevel>
-                  </configuration>
-                </plugin>
-                <plugin>
                     <groupId>org.antlr</groupId>
                     <artifactId>antlr3-maven-plugin</artifactId>
                     <version>${antlr.version}</version>
@@ -1623,113 +1608,6 @@
                     <propertyExpansion>config_loc=${checkstyle.conf.dir}</propertyExpansion>
                     <includeTestSourceDirectory>true</includeTestSourceDirectory>
                 </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-enforcer-plugin</artifactId>
-                <dependencies>
-                    <dependency>
-                        <groupId>de.skuzzle.enforcer</groupId>
-                        <artifactId>restrict-imports-enforcer-rule</artifactId>
-                        <version>0.9.0</version>
-                    </dependency>
-                </dependencies>
-                <executions>
-                    <execution>
-                        <id>enforce-no-snapshots</id>
-                        <goals>
-                            <goal>enforce</goal>
-                        </goals>
-                        <configuration>
-                            <rules>
-                                <requireReleaseDeps>
-                                    <message>Release builds are not allowed to have SNAPSHOT depenendencies</message>
-                                    <searchTransitive>true</searchTransitive>
-                                    <onlyWhenRelease>true</onlyWhenRelease>
-                                </requireReleaseDeps>
-                            </rules>
-                            <fail>true</fail>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>enforce-banned-dependencies-licenses</id>
-                        <goals>
-                            <goal>enforce</goal>
-                        </goals>
-                        <configuration>
-                            <rules>
-                                <bannedDependencies>
-                                    <excludes>
-                                        <!--LGPL licenced library-->
-                                        <exclude>com.google.code.findbugs:annotations</exclude>
-                                    </excludes>
-                                    <message>A banned license dependency was found!</message>
-                                </bannedDependencies>
-                            </rules>
-                            <fail>true</fail>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>enforce-banned-dependencies-logging</id>
-                        <goals>
-                            <goal>enforce</goal>
-                        </goals>
-                        <configuration>
-                            <rules>
-                                <bannedDependencies>
-                                    <excludes>
-                                        <!-- Move to SLF4J -->
-                                        <exclude>commons-logging:commons-logging</exclude>
-                                        <exclude>log4j:log4j</exclude>
-                                        <exclude>ch.qos.reload4j:reload4j</exclude>
-                                    </excludes>
-                                    <searchTransitive>false</searchTransitive>
-                                    <message>A banned logging dependency was found!</message>
-                                </bannedDependencies>
-                            </rules>
-                            <fail>true</fail>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>check-banned-imports</id>
-                        <phase>initialize</phase>
-                        <goals>
-                            <goal>enforce</goal>
-                        </goals>
-                        <configuration>
-                            <rules>
-                                <restrictImports implementation="de.skuzzle.enforcer.restrictimports.RestrictImports">
-                                    <reason>Do not use shaded imports</reason>
-                                    <bannedImports>
-                                        <bannedImport>**.shaded.**</bannedImport>
-                                        <bannedImport>jersey.repackaged.com.google.**</bannedImport>
-                                        <bannedImport>org.codehaus.jackson.**</bannedImport>
-                                        <bannedImport>org.apache.hive.com.**</bannedImport>
-                                        <bannedImport>org.apache.hive.org.**</bannedImport>
-                                    </bannedImports>
-                                    <allowedImports>
-                                        <allowedImport>org.apache.hadoop.hbase.shaded.protobuf.**</allowedImport>
-                                    </allowedImports>
-                                    <includeTestCode>true</includeTestCode>
-                                </restrictImports>
-                                <restrictImports implementation="de.skuzzle.enforcer.restrictimports.RestrictImports">
-                                    <reason>Do not use commons-lang</reason>
-                                    <bannedImports>
-                                        <bannedImport>org.apache.commons.lang.**</bannedImport>
-                                    </bannedImports>
-                                    <includeTestCode>true</includeTestCode>
-                                </restrictImports>
-                                <restrictImports implementation="de.skuzzle.enforcer.restrictimports.RestrictImports">
-                                    <reason>Do not use commons-logging; use slf4j</reason>
-                                    <bannedImports>
-                                        <bannedImport>org.apache.commons.logging.**</bannedImport>
-                                    </bannedImports>
-                                    <includeTestCode>true</includeTestCode>
-                                </restrictImports>
-                            </rules>
-                        </configuration>
-                    </execution>
-                </executions>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

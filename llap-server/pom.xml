@@ -31,6 +31,11 @@
         <!-- dependencies are always listed in sorted order by groupId, artifactId -->
         <!-- intra-project -->
         <dependency>
+              <groupId>org.knobinjection</groupId>
+              <artifactId>knob_runtime</artifactId>
+              <version>1.0-SNAPSHOT</version>
+            </dependency>
+        <dependency>
             <groupId>org.apache.hive</groupId>
             <artifactId>hive-exec</artifactId>
             <version>${project.version}</version>
@@ -476,6 +481,16 @@
             </resource>
         </resources>
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                <source>1.8</source>
+                <target>1.8</target>
+                <debug>true</debug>
+                <debuglevel>lines,vars,source</debuglevel>
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>build-helper-maven-plugin</artifactId>
