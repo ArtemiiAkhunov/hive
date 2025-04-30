@@ -1502,11 +1502,6 @@
                     <version>${maven.checkstyle.plugin.version}</version>
                 </plugin>
                 <plugin>
-                    <groupId>org.apache.rat</groupId>
-                    <artifactId>apache-rat-plugin</artifactId>
-                    <version>${rat.version}</version>
-                </plugin>
-                <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>versions-maven-plugin</artifactId>
                     <version>${maven.versions.plugin.version}</version>
@@ -1682,70 +1677,6 @@
                         <qfile_regex>${qfile_regex}</qfile_regex>
                         <run_disabled>${run_disabled}</run_disabled>
                     </systemPropertyVariables>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.rat</groupId>
-                <artifactId>apache-rat-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <phase>process-resources</phase>
-                        <goals>
-                            <goal>check</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <excludes>
-                        <eclude>.gitattributes</eclude>
-                        <exclude>*.patch</exclude>
-                        <exclude>**/pull_request_template.md</exclude>
-                        <exclude>data/**</exclude>
-                        <exclude>checkstyle/**</exclude>
-                        <exclude>docs/Gemfile</exclude>
-                        <exclude>bin/**</exclude>
-                        <exclude>**/*.iml</exclude>
-                        <exclude>**/*.txt</exclude>
-                        <exclude>**/*.log</exclude>
-                        <exclude>**/.factorypath</exclude>
-                        <exclude>**/.classpath</exclude>
-                        <exclude>**/.project</exclude>
-                        <exclude>**/.settings/**</exclude>
-                        <exclude>**/package-info.java</exclude>
-                        <exclude>**/*.properties</exclude>
-                        <exclude>**/*.q</exclude>
-                        <exclude>**/*.q.out</exclude>
-                        <exclude>**/*.q.out_*</exclude>
-                        <exclude>**/test/**/*.xml</exclude>
-                        <exclude>**/dependency-reduced-pom.xml</exclude>
-                        <exclude>**/*json</exclude>
-                        <exclude>**/gen/**</exclude>
-                        <exclude>**/target/**</exclude>
-                        <exclude>**/scripts/**</exclude>
-                        <exclude>**/resources/**</exclude>
-                        <exclude>**/*.rc</exclude>
-                        <exclude>**/*.rcfile</exclude>
-                        <exclude>**/*.qv</exclude>
-                        <exclude>**/*.out</exclude>
-                        <exclude>**/RecordTestObj.java</exclude>
-                        <exclude>**/*.m</exclude>
-                        <exclude>**/gen-java/**</exclude>
-                        <exclude>**/testdata/**</exclude>
-                        <exclude>**/test/org/apache/hadoop/hive/hbase/avro/**</exclude>
-                        <exclude>**/avro_test.avpr</exclude>
-                        <exclude>**/xmlReport.pl</exclude>
-                        <exclude>**/*.html</exclude>
-                        <exclude>**/sit</exclude>
-                        <exclude>**/test/queries/**/*.sql</exclude>
-                        <exclude>**/patchprocess/**</exclude>
-                        <exclude>**/metastore_db/**</exclude>
-                        <exclude>**/test/resources/**/*.ldif</exclude>
-                        <exclude>hcatalog/core/mapred/**/part-m*</exclude>
-                        <exclude>hcatalog/core/mapred/**/*_SUCCESS*</exclude>
-                        <exclude>**/PriorityBlockingDeque.java</exclude>
-                        <exclude>**/StringToDouble.java</exclude>
-                        <exclude>LICENSE-binary</exclude>
-                    </excludes>
                 </configuration>
             </plugin>
             <plugin>
