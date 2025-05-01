@@ -1,1 +1,0 @@
-FAILED: UDFArgumentTypeException The first argument to STACK() must be a constant integer (got string instead).

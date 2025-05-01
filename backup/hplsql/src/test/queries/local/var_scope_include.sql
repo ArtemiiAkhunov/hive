@@ -1,2 +1,0 @@
-declare
-k int = 7;

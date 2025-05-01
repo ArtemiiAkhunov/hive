@@ -1,1 +1,0 @@
-FAILED: SemanticException [Error 10016]: Line 1:14 Argument type mismatch '1': optrue only takes primitive types as 1st argument, got LIST
